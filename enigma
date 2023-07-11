@@ -1,0 +1,18 @@
+from typing import Union
+
+class A:
+    pass
+
+class B:
+    pass
+
+AB = A | B
+
+MaybeAB = AB | None
+
+def thing(x: MaybeAB, y: MaybeAB):
+    assert isinstance(x, A | None)
+    reveal_type(x)
+    
+    assert not isinstance(y, B)
+    reveal_type(y)
